@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Orchestra by stjosephcontent</title>
+    <title>Orchestra, by St Joseph Content</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -12,7 +12,7 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">Orchestra</h1>
-      <h2 class="project-tagline">Making web application deployment easy and cheap</h2>
+      <h2 class="project-tagline">Making web application deployment easy, cheap, fast, and banana</h2>
       <a href="https://github.com/stjosephcontent/orchestra" class="btn">View on GitHub</a>
       <a href="https://github.com/stjosephcontent/orchestra/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/stjosephcontent/orchestra/tarball/master" class="btn">Download .tar.gz</a>
@@ -20,17 +20,42 @@
 
     <section class="main-content">
 
-	<h3>Cool beans yo</h3>
+  <h3>Orchestra</h3>
+  <p>Orchestra is a set of tools that taken together make deploying web apps easy fast and cheap. This document describes it's major components, and concepts.</p>
 
-<p>We would like to build a set of tools that play nice together for quickly and easily spinning up, spinning down, deploying, and un-deploying web-apps and all their many variants, composed of sets of docker containers. We would like to take the "branching is easy and cheap" idea from git, and carry it over to web app deployment.</p>
+    <h4>Components</h4>
 
-<p>We introduce the idea of an "App", which is a set of docker containers, very much like what is described in a docker-compose.yml file, but with more stuff, allowing Apps and their variants to be managed by git and git branches ultimately, but by a CLI directly.</p>
+      <h5>Command Line Interface</h5>
+      <p>The CLI is for invoking common commands. It's API and usage is inspired by CLIs like npm, git, docker, docker-compose, rsync, and ssh. Indeed most of it's actions invoke one or more of those utilities.</p>
 
-<p>We also introduce the idea of "Targets", which are like hosts, but also include information on how to "unwrap" Apps. These will usually involve managed clusters a la ECS, but can be single hosts too.</p>
+      <h5>Application Registry</h5>
+      <p>This is a central service that acts as a global registry, keeping track of what applications in what state have been deployed to what endpoints.</p>
 
-<p>The goal is to create an set of tools that can manage an ecosystem of Web hosts and clients, with appropriate authorization and authentication (ex: junior devs cannot push certain apps to production Targets, and do not know database credentials used in production).</p>
+      <h5>Reverse Proxy</h5>
+      <p>This is the only exposed container, exposing itself by default on port 80. It links out to as many apps as needed using standard docker linking. Those apps, in turn, may link out to dependant services (like databases), but the Reverse Proxy is only aware of the <em>ambasador</em> service (ie: the web server). When a new Application is deployed to a new Target, that target stops accepting connections on one instance of it's Reverse Proxy, drains any remaining connections, and spins up a new Reverse Proxy with the newly added Application linked in. This should all happen in a failure tolerant, zero-downtime way</p>
 
-<p>Under the hood, this will involve a CLI, an "App Registry" (not to be confused with a docker registry), and a reverse proxy, all written in Node.js 4.x</p>
+      <!--
+      <h5>Shelbot</h5>
+      <p>This is the robotic identity that performs actions on user's behalf. It has SSH access to Target machines, a github (or gitlab) account, and PGP keys for transfering encrypted information to and from Orchestra users</p>
+      -->
+
+    <h4>Concepts</h4>
+    <img src="conceptual_arch.png" alt="Concepts in Orchestra" />
+
+      <h5>Project</h5>
+
+      <h5>Repo</h5>
+
+      <h5>Application</h5>
+
+      <h5>Ref</h5>
+
+      <h5>Service</h5>
+
+      <h5>Target</h5>
+
+      <h5>Instance</h5>
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/stjosephcontent/orchestra">Orchestra</a> is maintained by <a href="https://github.com/stjosephcontent">stjosephcontent</a>.</span>
