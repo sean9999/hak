@@ -1,0 +1,12 @@
+[submodule "colours"]
+	path = colours
+	url = https://github.com/stjosephcontent/colours
+[submodule "dogs"]
+	path = dogs
+	url = https://github.com/stjosephcontent/dogs
+[submodule "sjc-cli"]
+	path = sjc-cli
+	url = https://github.com/stjosephcontent/sjc-cli
+[submodule "app-registry"]
+	path = app-registry
+	url = https://github.com/stjosephcontent/app-registry
