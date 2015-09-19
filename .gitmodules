@@ -10,3 +10,6 @@
 [submodule "app-registry"]
 	path = app-registry
 	url = https://github.com/stjosephcontent/app-registry
+[submodule "orchestra-reverse-proxy"]
+	path = orchestra-reverse-proxy
+	url = https://github.com/stjosephcontent/orchestra-reverse-proxy.git
