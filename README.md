@@ -23,7 +23,7 @@ The proxy needs to run as a privileged user because it's going to open port 80 a
 $ bash ~/.sjc/reverseproxy/run.sh
 ````
 
-Output from the proxy will stream to that console, so you'll need to open another one to start ruinning commands. So don't worry if this command looks stuck. It's not. Leave that console as is, and open a new one to run some more commands.
+Output from the proxy will stream to that console, so you'll need to open another one to start running commands. So don't worry if this command looks stuck. It's not. Leave that console as is, and open a new one to run some more commands.
 
 This system expects your docker-machine to be called "dev". so either create a new machine with the virtualbox driver called "dev", or alter `~/.sjc/cli/src/config.json` to point to your machine.
 
