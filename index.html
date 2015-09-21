@@ -20,7 +20,53 @@
 
     <section class="main-content">
 
+    <h3>Getting Started</h3>
+
+
+    <h4>Notes:</h4>
+    Some primary dependencies include:
+    <ul>
+      <li>NodeJS 4.x</li>
+      <li><a href="http://kmkeen.com/jshon/">jshon</a></li>
+      <li>Docker Machine for Windows and OSX</li>
+    </ul>
+
+    <p>run this command to download the CLI:</p>
+
+    <code><pre>https://raw.githubusercontent.com/stjosephcontent/sjc-cli/master/install.sh</pre></code>
+
+    <p>That will install your CLI to ~/.sjc/cli</p>
+
+    <p>Now install the Reverse Proxy:</p>
+
+    <code><pre>https://raw.githubusercontent.com/stjosephcontent/orchestra-reverse-proxy/master/install.sh</pre></code>
+
+    <p>That will install the proxy to: ~/.sjc/reverseproxy</p>
+
+    <p>Now run the Reverse Proxy</p>
+
+    <code><pre>bash ~/.sjc/reverseproxy/run.sh</pre></code>
+
+    <p>Output from the proxy will stream to that console, so you'll need to open another one to start ruinning commands.</p>
+
+    <p>This system expects your docker-machine to be called "dev". so either create a new machine with the virtualbox driver called "dev", or alter ~/.sjc/cli/src/config.json to point to your machine</p>
+
+    <p>ensure docker-machine is running: docker-machine start dev</p>
+
+    <p>COol! Your system should be running. Let's try some stuff...</p>
+
+    <p>Clone a REPO: <code>git clone https://github.com/stjosephcontent/dogs &amp;&amp; cd dogs</code></p>
+
+    <p>Now try running the app: <code>sjc start --hard</code></p>
+
+    <p>Now try listing it: <code>sjc ls</code></p>
+
+    <p>Now open a browser: <code>sjc browse 1</code></p>
+
+    <p>Now learn about more features: <code>sjc help</code>, and read on for core concepts</p>
+
   <h3>Orchestra</h3>
+
   <p>Orchestra is a set of tools that taken together make deploying and scaling web apps easy fast and cheap.</p> 
     
     <p>Most modern web applications comprise multiple core technologies including web servers, application servers, database servers, APIs and 3rd party web services. Orchestra was created to make deploying and scaling these web applications easy fast and cheap. Not only that, Orchestra is capable of deploying multiple web applications from different branches of the same Git repository to any target, making it an ideal tool for developers as well as DevOps.</p>
@@ -76,13 +122,6 @@
 
 
 
-<h4>Notes:</h4>
-Some primary dependencies include:
-<ul>
-  <li>NodeJS 4.x</li>
-  <li><a href="http://kmkeen.com/jshon/">jshon</a></li>
-  <li>Docker Machine for Windows and OSX</li>
-</ul>
 
 
       <footer class="site-footer">
