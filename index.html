@@ -20,58 +20,62 @@
 
     <section class="main-content">
 
-    <h3>Getting Started</h3>
+<h3>Getting Started</h3>
+<p>>Some primary dependencies include:
+  <ul>
+    <li>NodeJS 4.x</li>
+    <li><a href="http://kmkeen.com/jshon/">jshon</a></li>
+    <li>Docker Machine (if you are on OS X, Windows support comming soon!)</li>
+  </ul>
+</p>
 
+<p>run this command to download the CLI to <code>~/.sjc/cli</code></p>
 
-    <h4>Notes:</h4>
-    Some primary dependencies include:
-    <ul>
-      <li>NodeJS 4.x</li>
-      <li><a href="http://kmkeen.com/jshon/">jshon</a></li>
-      <li>Docker Machine for Windows and OSX</li>
-    </ul>
+<pre><code>$ curl https://raw.githubusercontent.com/stjosephcontent/sjc-cli/master/install.sh | bash
+</code></pre>
 
-    <p>run this command to download the CLI:</p>
+<p>Now install the Reverse Proxy to <code>~/.sjc/cli</code>:</p>
 
-    <code><pre>curl https://raw.githubusercontent.com/stjosephcontent/sjc-cli/master/install.sh | bash</pre></code>
+<pre><code>$ curl https://raw.githubusercontent.com/stjosephcontent/orchestra-reverse-proxy/master/install.sh | bash
+</code></pre>
 
-    <p>That will install your CLI to ~/.sjc/cli</p>
+<p>The proxy needs to run as a privileged user because it's going to open port 80 and write to <code>/etc/hosts</code></p>
 
-    <p>Now install the Reverse Proxy:</p>
+<pre><code>$ bash ~/.sjc/reverseproxy/run.sh
+</code></pre>
 
-    <code><pre>curl https://raw.githubusercontent.com/stjosephcontent/orchestra-reverse-proxy/master/install.sh | bash</pre></code>
+<p>Output from the proxy will stream to that console, so you'll need to open another one to start running commands. So don't worry if this command looks stuck. It's not. Leave that console as is, and open a new one to run some more commands.</p>
 
-    <p>That will install the proxy to: <code>~/.sjc/reverseproxy</code></p>
+<p>This system expects your docker-machine to be called "dev". so either create a new machine with the virtualbox driver called "dev", or alter <code>~/.sjc/cli/src/config.json</code> to point to your machine.</p>
 
-    <p>Now run the Reverse Proxy: </p>
+<p>Try: </p>
 
-    <code><pre>bash ~/.sjc/reverseproxy/run.sh</pre></code>
+<pre><code>$ sjc ls
+</code></pre>
 
-    <p>Output from the proxy will stream to that console, so you'll need to open another one to start ruinning commands.</p>
+<p>What did you get? A message telling you that no SJC apps were running? Well that's no fun. Let's fix that.</p>
 
-    <p>This system expects your docker-machine to be called "dev". so either create a new machine with the virtualbox driver called "dev", or alter <code>~/.sjc/cli/src/config.json</code> to point to your machine</p>
+<p>Clone dogs:</p>
 
-    <p>ensure docker-machine is running: <code>sjc up</code></p>
+<pre><code>$ git clone https://github.com/stjosephcontent/dogs
+$ cd dogs
+$ sjc start --hard
+$ sjc ls
+</code></pre>
 
-    <p>Cool! Your system should be running. Let's try some stuff...</p>
+<p>Ah very good! Our first SJC app. Let's create another:</p>
 
-    <p>Clone a REPO: <code>git clone https://github.com/stjosephcontent/dogs &amp;&amp; cd dogs</code></p>
+<pre><code>$ git checkout poodle
+$ sjc start --hard
+$ sjc ls
+</code></pre>
 
-    <p>Now try running the app: <code>sjc start --hard</code></p>
+<p>Now we're cooking with gas! Open them up in your browser: <code>sjc browse 1</code> or <code>sjc browse 2</code>.</p>
 
-    <p>Now try listing all your running apps (you should have one): <code>sjc ls</code></p>
+<p>How cool is that? You should also try using this REPO for more variants and more fun: <a href="https://github.com/stjosephcontent/colours">https://github.com/stjosephcontent/colours</a></p>
 
-    <p>Now open a browser: <code>sjc browse 1</code></p>
+<p>For more info, <code>sjc help</code>, or read on...</p>
 
-    <p>Sweet! Let's try opening a variant of this app: <code>git checkout poodle</code></p>
-
-    <p>Let's launch this new variant alongside the old one: <code>sjc start --hard</code></p>
-
-    <p>Now list: <code>sjc ls</code></p>
-
-    <p>How cool is that? You should also try using this REPO for more variants and more fun: <tt>https://github.com/stjosephcontent/dogs</tt></p>
-
-    <p>You get the idea. Now learn about more features: <code>sjc help</code>, and read on for core concepts</p>
 
   <h3>Orchestra</h3>
 
@@ -156,3 +160,4 @@
 
   </body>
 </html>
+
