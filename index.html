@@ -41,9 +41,9 @@
 
     <code><pre>curl https://raw.githubusercontent.com/stjosephcontent/orchestra-reverse-proxy/master/install.sh | bash</pre></code>
 
-    <p>That will install the proxy to: ~/.sjc/reverseproxy</p>
+    <p>That will install the proxy to: <code>~/.sjc/reverseproxy</code></p>
 
-    <p>Now run the Reverse Proxy</p>
+    <p>Now run the Reverse Proxy: </p>
 
     <code><pre>bash ~/.sjc/reverseproxy/run.sh</pre></code>
 
@@ -51,19 +51,25 @@
 
     <p>This system expects your docker-machine to be called "dev". so either create a new machine with the virtualbox driver called "dev", or alter <code>~/.sjc/cli/src/config.json</code> to point to your machine</p>
 
-    <p>ensure docker-machine is running: docker-machine start dev</p>
+    <p>ensure docker-machine is running: <code>sjc up</code></p>
 
-    <p>COol! Your system should be running. Let's try some stuff...</p>
+    <p>Cool! Your system should be running. Let's try some stuff...</p>
 
     <p>Clone a REPO: <code>git clone https://github.com/stjosephcontent/dogs &amp;&amp; cd dogs</code></p>
 
     <p>Now try running the app: <code>sjc start --hard</code></p>
 
-    <p>Now try listing it: <code>sjc ls</code></p>
+    <p>Now try listing all your running apps (you should have one): <code>sjc ls</code></p>
 
     <p>Now open a browser: <code>sjc browse 1</code></p>
 
-    <p>Now learn about more features: <code>sjc help</code>, and read on for core concepts</p>
+    <p>Sweet! Let's try opening a variant of this app: <code>git checkout poodle</code></p>
+
+    <p>Let's launch this new variant alongside the old one: <code>sjc start --hard</code></p>
+
+    <p>Cool! Now list: <code>sjc ls</code></p>
+
+    <p>You get the idea. Now learn about more features: <code>sjc help</code>, and read on for core concepts</p>
 
   <h3>Orchestra</h3>
 
