@@ -8,6 +8,12 @@
    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+   <style>
+      h3, h4, h5 {
+         margin-bottom: 0;
+         padding-bottom: 0;
+      }
+   </style>
 </head>
 
 <body>
@@ -45,7 +51,7 @@
          <dt>description</dt>
          <dd>A description of the project, for humans</dd>
          <dt>tags</dt>
-         <dd>An array of tags helpful in searching by the Application Registry API.</dd>
+         <dd>An array of tags helpful for searching, filtering, and organizing.</dd>
          <dt>homepage</dt>
          <dd>A landing page with a synopsis of the project and links to each application repo and optional documentation wiki (e.g. <a href="http://stjosephcontent.github.io/orchestra/">Orchestra</a>.) plus the applications defined in the next section.</dd>
       </dl>
@@ -67,7 +73,7 @@
 
 
       <h5>Instance</h5>
-      <p>An Instance is what happens when a Ref is pushed to a Target. An Instance has a unique and <em>predictable</em> URL, in addition to a unique and <em>unpredictable</em> ephermal port. It's address can be composed as <code>Project.slug + Application.slug + Ref + Target.endpoint</code>. ( ie: <em>cerebrum.cms.CE-99-add-footer.staging.sjc.io</em> ). The ephemeral port is used internally, and is not needed to construct an instance’s address.</p>
+      <p>An Instance is what happens when a Ref is pushed to a Target. An Instance has a unique and <em>predictable</em> URL, in addition to a unique and <em>unpredictable</em> ephermal port. It's address can be composed as <code>Project.slug + Application.slug + Ref + Target.endpoint</code>. ( ie: <em>cerebrum.cms.CE-99-add-footer.staging.sjc.io</em> ). The ephemeral port is used internally, and is not needed to construct an instance’s address. If changes to an app are pushed to a target, it will retain the same address, but receive a new ephemeral port. This is how Orchestra and Reverse Proxy will gracefully handle updated application state.</p>
          
       <img src="conceptual_arch.png" alt="Concepts in Orchestra" />
       <h4>Components</h4>
