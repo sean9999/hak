@@ -25,7 +25,7 @@
       <blockquote>Orchestra is a set of tools that work together to make deploying and scaling web apps easy, fast, and cheap.</blockquote>
 
       <p>Most modern web applications comprise multiple core technologies including web servers, application servers, database servers, APIs, and 3rd party services. Orchestra was created to deploy and scale apps made up of these components elegantly. It can deploy multiple web applications made up of multiple services, from multiple branches of multiple Git repositories, to multiple targets, making it an ideal tool for developers and DevOps.</p>
-      <p>The concept is akin to a symphony, composed of multiple sections, which are made up of multiple players, all culminating in multiple orgasms.</p>
+      <p>The concept is akin to a symphony, composed of multiple sections, which are made up of multiple players, culminating in multiple orgasms.</p>
 
       <h4>Concepts</h4>
       <p>The root level for Orchestra is the <em>Project</em>. A project can be thought of as group of one or more <em>Applications</em>. Applications are made up of <em>services</em>, with each service sharing a one-to-one relationship with a Docker container. A simple real-world example of this would be a self-hosted WordPress installation for a personal recipe site called <em>MyRecipes</em>. <em>MyRecipes</em> would be the project that contains an application called <em>website</em>. The <em>website</em> application contains two services, one called <em>PHP</em> and the other <em>MySQL</em>. Since services are 1:1 with Docker containers this means our project is composed of two Docker containers. Now, if we want to add a custom recipe uploader based on a cool NodeJS web-service, we add a new application to the project called <em>recipe-api</em>. This application contains a single service called <em>NodeJS</em> which again, has a one-to-one relationship with a Docker container.</p>
@@ -36,7 +36,7 @@
 
       <h5>Project</h5>
 
-      <p>A project is a way to group and namespace related applications. As such, it is lightweight. As far as meta-data tracking and includes:
+      <p>A project is a way to group and namespace related applications. It also includes some meta-data:
       <dl>
          <dt>name</dt>
          <dd>A short, legible, semantic, meaningful name</dd>
