@@ -13,7 +13,7 @@
 <body>
    <section class="page-header">
       <h1 class="project-name">Orchestra</h1>
-      <h2 class="project-tagline">Making web application deployment easy, cheap, fast, and bananas</h2>
+      <h2 class="project-tagline">Making web application deployment easy, cheap, fast, and banana</h2>
       <a href="https://github.com/stjosephcontent/orchestra" class="btn">View on GitHub</a>
       <a href="https://github.com/stjosephcontent/orchestra/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/stjosephcontent/orchestra/tarball/master" class="btn">Download .tar.gz</a>
@@ -22,146 +22,87 @@
    <section class="main-content">
 
       <h3>Orchestra</h3>
-      <p>Orchestra is a set of tools that taken together make deploying and scaling web apps easy fast and cheap.</p>
-
-      <p>
-         Most modern web applications comprise multiple core technologies including web servers, application servers, database
-         servers, APIs and 3rd party web services. Orchestra was created to make deploying and scaling these web applications
-         easy fast and cheap. Not only that, Orchestra is capable of deploying multiple web applications from different branches
-         of the same Git repository to any target, making it an ideal tool for developers as well as DevOps.
-      </p>
-
+      <p>Orchestra is a set of tools that work together make deploying and scaling web apps easy, fast, and cheap.</p>
+      <p>Most modern web applications comprise multiple core technologies including: web servers, application servers, database servers, APIs, and 3rd party web services. Orchestra was created to deploy and scale these components elegantly. It is capable of deploying multiple web applications, made up of multiple services, from multiple branches of multiple Git repositories, to multiple targets, making it an ideal tool for developers and DevOps.</p>
+      <p>The concept is akin to symphony, composed of multiple sections, make up of multiple players, culminating in multiple orgasms.</p>
 
       <h4>Concepts</h4>
-      <p>
-         <strong>(TL;DR)</strong> The root level for Orchestra is the project. A project may be thought of as group of one or
-         more applications where applications are made up of services. Each service shares a one-to-one relationship with a
-         Docker container. A a simple real-world example would be a self-hosted WordPress installation for a personal recipe
-         site called "MyRecipes".
-      </p>
-      <p>
-         MyRecipes would be the project and it would contain an application called website. The website application would contain
-         two services, one called PHP and the other MySQL. Since services are one-to-one with Docker containers this implies
-         our project is orchestrated by two Docker containers. Let us say we want add a custom recipe uploader based on a cool
-         NodeJS webservice. We add a new application to the project called recipe-api. This application contains a single service
-         called NodeJS which again, has a one-to-one relationship with a Docker container.
-      </p>
-      <p><img src="orchestra.png" /></p>
-      <p>The remainder of this section goes into greater detail about Projects, Applications, Refs and Services</p>
-      <h5>Project</h5>
-      <p>
-         This is a way to group related applications. A project itself is lightweight as far as meta-data tracking and includes:
-         <ul>
-            <li><strong>name</strong>: Short, legible, semantic, meaningful name.</li>
-            <li>
-               <strong>slug</strong>: A system generated slug of the name that is used in REST calls to the Application Registry
-               API.
-            </li>
-            <li><strong>description</strong>: A more full description of the project.</li>
-            <li><strong>tags</strong>: An array of tags helpful in searching by the Application Registry API.</li>
-            <li>
-               <strong>homepage</strong>: A landing page with a synopsis of the project and links to each application repo and optional
-               documentation wiki (e.g. <a href="http://stjosephcontent.github.io/orchestra/">Orchestra</a>.)
-            </li>
-         </ul>
-         plus the applications defined in the next section.
-      </p>
+      <p>The root level for Orchestra is the <em>Project</em>. A project can be thought of as group of one or more <em>Applications</em>. Applications are made up of <em>services</em>, with each service sharing a one-to-one relationship with a Docker container. A simple real-world example of this would be a self-hosted WordPress installation for a personal recipe site called <em>MyRecipes</em>. <em>MyRecipes</em> would be the project that contains an application called <em>website</em>. The <em>website</em> application contains two services, one called <em>PHP</em> and the other <em>MySQL</em>. Since services are 1:1 with Docker containers this means our project is composed of two Docker containers. Now, if we want to add a custom recipe uploader based on a cool NodeJS web-service, we add a new application to the project called <em>recipe-api</em>. This application contains a single service called <em>NodeJS</em> which again, has a one-to-one relationship with a Docker container.</p>
 
+      <p><img src="orchestra.png" /></p>
+
+      <p>Let’s go into greater detail on Projects, Applications, Refs, and Services</p>
+
+      <h5>Project</h5>
+
+      <p>A project is a way to group and namespace related applications. As such, it is lightweight. As far as meta-data tracking and includes:
+      <dl>
+         <dt>name</dt>
+         <dd>A short, legible, semantic, meaningful name</dd>
+         <dt>slug</dt>
+         <dd>a safe, machine-readble version of the name, composed of URL-safe characters (used in REST calls to the Application Registry API)</dd>
+         <dt>description</dt>
+         <dd>A description of the project, for humans</dd>
+         <dt>tags</dt>
+         <dd>An array of tags helpful in searching by the Application Registry API.</dd>
+         <dt>homepage</dt>
+         <dd>A landing page with a synopsis of the project and links to each application repo and optional documentation wiki (e.g. <a href="http://stjosephcontent.github.io/orchestra/">Orchestra</a>.) plus the applications defined in the next section.</dd>
+      </dl>
+      </p>
 
       <h5>Application</h5>
-      <p>
-         This is the main focus of operations performed by SJC CLI and App Registry. The system will normally think in terms of
-         Applications and Instances. For simplicity of illustration repo here is a string. In reality this will be object that
-         can support multiple remotes and multiple protocols. There is one git repo per application. An Application can be thought
-         of as all the files in that repo + all the information in it's appdef. It has a field called "slug" that must be unique
-         among all other Applications. The fields in an appdef are defined here: appdef.(yaml|json). An Application can contain
-         zero or more Services. However, if there are no Services, there is a lot that Orchestra cannot do. In this version
-         of Orchestra, we restrict ourselves to dealing with deployments of web apps; therefore, we allow ourselves the luxury
-         of assuming that Applications have at least 1 Service, and exactly 1 service that is flagged as "ambassador".
-      </p>
-      <p>
-         Each application shares a one-to-one relationship with a Git repository.
+      <p>This is the main focus of operations performed by SJC CLI and App Registry. The system will normally think in terms of Applications and Instances. An Application can be thought of as all the files in that repo plus all the information in the appdef.yml file that sits at it's root. An Application can contain 1 or more services (in the future, we may support zero-service applications). Each application shares a 1:1 relationship with a Git repository.</p>
 
-         <h5>Ref</h5>
-      <p>
-         This system needs git. Like git, you have to be in a working directory to invoke commands on that app. Orchestra uses
-         git's method of identifying a specific commit. Hence, it will usually deal with branches, but can work in "detached
-         head" mode as well. You can think of a Ref exactly as you do with git: The Application in a certain, definite state.
-      </p>
+      <h5>Ref</h5>
+      <p>This system needs git. Like git, you have to be in a working directory to invoke commands on that app. Orchestra uses git's method of identifying a specific commit. Hence, it will usually deal with branches, but can work in "detached head" mode as well and refer unambiguously to commits by it's sha1 ID. You can think of a ref as simply an Application in a definite, identifiable state.</p>
+
 
       <h5>Service</h5>
-      <p>
-         A Service is a Docker Container, in a addition to an agreed upon name (and some other metadata). For instance, a Django
-         service will contain a Dockerfile, and the name "django", which allows other services to know how to link to it.
-         An Application is composed of 1 or more Services, usually linked in a specified way. One of the services is designated
-         the "ambassador", which is how Orchestra knows which Service to assign an ephemeral port to, and to expose it's reverse
-         proxy to. The "services" section of appdef.yml follows closely the docker-compose.yml format. This is by design.
-         Indeed, appdef.yml could be seen as a superset of docker-compose.yml.
-      </p>
+      <p>A Service is a Docker Container in addition to an agreed upon name (and some other metadata). For example, a Django service will contain a Dockerfile, the name "django", which allows other services to know how to link to it, and some information on how it should be run (like in a docker-compose.yml file). One of the Services is designated the "ambassador", which is how Orchestra knows which Service to assign an ephemeral port to, and to expose it's reverse proxy to. The "services" section of appdef.yml follows closely the docker-compose.yml format. This is by design. Indeed, appdef.yml can be seen as a superset of docker-compose.yml.</p>
+
 
       <h5>Target</h5>
-      <p>
-         A target is a host, or a cluster of hosts acting as one. Targets contain information on how to "unpack" the docker
-         app, and that information can vary from one Target to another (ex: A production endpoint will unpack an app and replace
-         the MySQL service with RDS credential. A staging server may do the same, but with different credentials).
+      <p>A Target is a host, or a cluster of hosts acting as one. Targets contain information on how to "unpack" the docker app, and that information can vary from one Target to another (ex: A production endpoint will unpack an app and replace the MySQL service with RDS credential. A staging server may do the same, but with different credentials. Another target may simply spin up the containers unmolested).</p>
 
-         <h5>Instance</h5>
-      <p>
-         A Instance is what happens when a Ref is pushed to a Target. An instance has a unique and predictable URL, in addition
-         to a unique and <em>unpredictable</em> ephermal port. It's address can be composed as Proejct.slug + Application.slug
-         + Ref + Target.endpoint. ( ie: cerebrum.cms.CE-99-add-footer.staging.sjc.io ). The ephemeral port is used internally,
-         and is not needed to construct an instance's address.
-      </p>
+
+      <h5>Instance</h5>
+      <p>An Instance is what happens when a Ref is pushed to a Target. An Instance has a unique and <em>predictable</em> URL, in addition to a unique and <em>unpredictable</em> ephermal port. It's address can be composed as <code>Project.slug + Application.slug + Ref + Target.endpoint</code>. ( ie: <em>cerebrum.cms.CE-99-add-footer.staging.sjc.io</em> ). The ephemeral port is used internally, and is not needed to construct an instance’s address.</p>
+         
       <img src="conceptual_arch.png" alt="Concepts in Orchestra" />
       <h4>Components</h4>
 
       <h5><a href="https://github.com/stjosephcontent/sjc-cli">Command Line Interface</a></h5>
       <p>
-         The CLI is for invoking common commands. It's API and usage is inspired by CLIs like npm, git, docker, docker-compose,
-         rsync, and ssh. Indeed most of it's actions invoke one or more of those utilities.
+         The CLI is for invoking common commands. It's API and usage is inspired by CLIs like npm, git, docker, docker-compose, rsync, and ssh. Indeed most of it's actions invoke one or more of those utilities.
       </p>
       <p>
-         The command line interface is implemented in NodeJS 4 and communicates directly with the Docker daemon. All project
-         definitions, dependencies, host information, docker files, etc are retrieved from a central registry.
+         The command line interface is implemented in NodeJS 4.0 and communicates directly with the Docker daemon. All project definitions, dependencies, host information, docker files, etc are retrieved from a central registry.
       </p>
 
       <h5><a href="https://github.com/stjosephcontent/app-registry">Application Registry</a></h5>
       <p>
-         This is a central service that acts as a global registry, keeping track of what applications in what state have been
-         deployed to what endpoints. Every app declares it's features and properties with an appdef.yml file, that lives
-         at it's root.
+         This is a central service that acts as a global registry, keeping track of what applications in what state have been deployed to what endpoints. Every app declares it's features and properties with an appdef.yml file, that lives at it's repo's root.
       </p>
-      <p>Application Registry is implemented as a REST API server on NodeJS 4, ExpressJS 4, Swagger 2 and MongoDB 3. </p>
+      <p>Application Registry is implemented as a REST API server on NodeJS 4, ExpressJS 4, Swagger 2 and MongoDB 3.</p>
 
       <h5><a href="https://github.com/stjosephcontent/orchestra-reverse-proxy">Reverse Proxy</a></h5>
-      <p>
-         This is the only exposed container, exposing itself by default on port 80. It links out to as many apps as needed
+      <p>This is the only exposed container, exposing itself by default on port 80. It links out to as many apps as needed
          using standard docker linking. Those apps, in turn, may link out to dependant services (like databases), but the
-         Reverse Proxy is only aware of the <em>ambasador</em> service (ie: the web server). When a new Application is deployed
-         to a new Target, that target stops accepting connections on one instance of it's Reverse Proxy, drains any remaining
-         connections, and spins up a new Reverse Proxy with the newly added Application linked in. This should all happen
-         in a failure tolerant, zero-downtime way
-      </p>
+         Reverse Proxy is only aware of the <em>ambasador</em> service (ie: the web server). When a new Application is deployed to a new Target, that target stops accepting connections on one instance of it's Reverse Proxy, drains any remaining connections, and spins up a new Reverse Proxy with the newly added Application linked in. This should all happen in a failure tolerant, zero-downtime way</p>
 
       <h5><a href="https://github.com/stjosephcontent/dogs">dogs</a></h5>
       <p>
-         The Orchestra repository contains two trivial tutorial projects as Github submodules, Colours and Dogs. The respositories
-         can used to try out SJC-CLI by spinning up/down projects based on Git branches.
+         The Orchestra repository contains two trivial tutorial projects as Github submodules, Colours and Dogs. The respositories can used to try out SJC-CLI by spinning up/down projects based on Git branches.
       </p>
+      
+      <h5><a href="https://github.com/stjosephcontent/colours">colours</a></h5>
       <p>
-
-         <h5><a href="https://github.com/stjosephcontent/colours">colours</a></h5>
-      <p>
-         Similar to dogs, colours is an additional project that can be used with Orchestra to test multiple different projects
-         being orchestrated on the same host simultaneously.
+         see above
       </p>
       <!--
       <h5>Shelbot</h5>
       <p>This is the robotic identity that performs actions on user's behalf. It has SSH access to Target machines, a github (or gitlab) account, and PGP keys for transfering encrypted information to and from Orchestra users</p>
       -->
-
-
-
 
       <h3>Getting Started</h3>
       <p>
@@ -262,6 +203,9 @@ $ sjc ls
 
          <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
+
+      <h3>Vote</h3>
+      <p>This project is part of <a href="https://www.docker.com/community/hackathon">Docker Global Hack Day #3</a>. If you want (and we would love you for it) you can <a href="https://www.docker.com/community/hackathon">vote on it</a></p>
 
    </section>
    <script type="text/javascript">
