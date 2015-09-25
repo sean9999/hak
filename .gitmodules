@@ -1,15 +1,15 @@
 [submodule "colours"]
-	path = colours
+	path = apps/colours
 	url = https://github.com/stjosephcontent/colours
 [submodule "dogs"]
-	path = dogs
+	path = apps/dogs
 	url = https://github.com/stjosephcontent/dogs
 [submodule "sjc-cli"]
-	path = sjc-cli
+	path = cli
 	url = https://github.com/stjosephcontent/sjc-cli
 [submodule "app-registry"]
-	path = app-registry
+	path = registry
 	url = https://github.com/stjosephcontent/app-registry
 [submodule "orchestra-reverse-proxy"]
-	path = orchestra-reverse-proxy
+	path = reverseproxy
 	url = https://github.com/stjosephcontent/orchestra-reverse-proxy.git
