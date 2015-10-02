@@ -97,15 +97,16 @@
       <p>This is the only exposed container, exposing itself by default on port 80. It links out to as many apps as needed
          using standard docker linking. Those apps, in turn, may link out to dependant services (like databases), but the
          Reverse Proxy is only aware of the <em>ambasador</em> service (ie: the web server). When a new Application is deployed to a new Target, that target stops accepting connections on one instance of it's Reverse Proxy, drains any remaining connections, and spins up a new Reverse Proxy with the newly added Application linked in. This should all happen in a failure tolerant, zero-downtime way</p>
-
+      <h4>Tutorial Github Repositories</h4>
+      Two repositories, dogs and colours, are provided as tutorials for getting started with Orchestra. These respositories can used to try out SJC-CLI by spinning up/down projects based on Git branches.  
       <h5><a href="https://github.com/stjosephcontent/dogs">dogs</a></h5>
       <p>
-         The Orchestra repository contains two trivial tutorial projects as Github submodules, Colours and Dogs. The respositories can used to try out SJC-CLI by spinning up/down projects based on Git branches.
+                     
       </p>
       
       <h5><a href="https://github.com/stjosephcontent/colours">colours</a></h5>
       <p>
-         see above
+         
       </p>
       <!--
       <h5>Shelbot</h5>
