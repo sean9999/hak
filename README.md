@@ -11,7 +11,7 @@ run this command to download the CLI to `~/.sjc/cli`
 $ curl https://raw.githubusercontent.com/stjosephcontent/sjc-cli/master/install.sh | bash
 ````
 
-Now install the Reverse Proxy to `~/.sjc/cli`:
+Now install the Reverse Proxy to `~/.sjc/reverseproxy`:
 
 ````
 $ curl https://raw.githubusercontent.com/stjosephcontent/orchestra-reverse-proxy/master/install.sh | bash
