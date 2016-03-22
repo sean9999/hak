@@ -5,27 +5,22 @@
 - [jshon](http://kmkeen.com/jshon/)
 - Docker Machine (if you are on OS X, Windows support comming soon!)
 
-run this command to download the CLI to `~/.sjc/cli`
+run this command to install cli, reverseproxy, and skel:
 
 ````
-$ curl https://raw.githubusercontent.com/stjosephcontent/sjc-cli/master/install.sh | bash
+$ curl https://raw.githubusercontent.com/stjosephcontent/orchestra/master/install.sh | bash
 ````
 
-Now install the Reverse Proxy to `~/.sjc/reverseproxy`:
-
-````
-$ curl https://raw.githubusercontent.com/stjosephcontent/orchestra-reverse-proxy/master/install.sh | bash
-````
 
 The proxy needs to run as a privileged user because it's going to open port 80 and write to `/etc/hosts`
 
 ````
-$ bash ~/.sjc/reverseproxy/run.sh
+$ cd ~/.sjc/reverseproxy && sudo ./run.sh
 ````
 
-Output from the proxy will stream to that console, so you'll need to open another one to start running commands. So don't worry if this command looks stuck. It's not. Leave that console as is, and open a new one to run some more commands.
+Output from the proxy will collect in `~/.sjc/reverseproxy/logz`.
 
-This system expects your docker-machine to be called "dev". so either create a new machine with the virtualbox driver called "dev", or alter `~/.sjc/cli/src/config.json` to point to your machine.
+This system expects your docker-machine to be called "orchestra". See `docker-machine help create` for instructions.
 
 Try: 
 
