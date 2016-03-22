@@ -13,3 +13,6 @@
 [submodule "orchestra-reverse-proxy"]
 	path = reverseproxy
 	url = https://github.com/stjosephcontent/orchestra-reverse-proxy.git
+[submodule "skel"]
+	path = skel
+	url = git@github.com:stjosephcontent/skel

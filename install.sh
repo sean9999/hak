@@ -2,20 +2,41 @@
 
 #	sjc
 if [ -d ~/.sjc ]; then
-    mkdir ~/.sjc
-    git clone --recursive git@github.com:stjosephcontent/orchestra.git
+    mkdir ~/.sjc/cli
 fi
 
 #	cli
-cd ~/.sjc/cli
-git pull git@github.com/stjosepcontent/sjc-cli
-npm install
-sudo -H npm link
+if [ -d ~/.sjc.cli ]; then
+    cd ~/.sjc/cli
+    git pull
+    npm install
+    sudo -H npm link    
+else
+    mkdir ~/.sjc/cli
+    git clone git@github.com:stjosepcontent/sjc-cli ~/.sjc/cli
+    cd ~/.sjc/cli
+    npm install
+    sudo -H npm link
+fi
 
 #	reverse proxy
-cd ~/.sjc/reverseproxy
-git pull git@github.com/stjosephcontent/orchestra-reverse-proxy
-npm install
+if [ -d ~/.sjc/reverseproxy ];then
+    cd ~/.sjc/reverseproxy
+    git pull
+    sudo -H npm install
+else
+    mkdir ~/.sjc/reverseproxy
+    git clone git@github.com:stjosephcontent/orchestra-reverse-proxy ~/.sjc/reverseproxy
+    sudo -H npm install
+fi
+
+#   skel
+if [ -d ~/.sjc/skel ]; then
+    cd ~/.sjc/skel
+    git pull
+else
+    mkdir ~/.sjc/skel
+    git clone git@github.com:stjosephcontent/skel ~/.sjc/skel
+fi
 
 echo "all done installing orchestra"
-
