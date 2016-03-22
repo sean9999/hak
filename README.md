@@ -12,15 +12,17 @@ $ curl https://raw.githubusercontent.com/stjosephcontent/orchestra/master/instal
 ````
 
 
-The proxy needs to run as a privileged user because it's going to open port 80 and write to `/etc/hosts`
+This system expects your docker-machine to be called "orchestra". See `docker-machine help create` for instructions. You likely want the virtualbox provider.
+
+The proxy needs to run as a privileged user because it's going to open port 80 and write to `/etc/hosts`. Run sudo with the -E flag to make use of the environment variables that `docker-machine env orchestra` creates.
 
 ````
-$ cd ~/.sjc/reverseproxy && sudo ./run.sh
+$ docker-machine start orchestra
+$ eval $(docker-machine env orchestra)
+$ cd ~/.sjc/reverseproxy && sudo -E ./run.sh
 ````
 
 Output from the proxy will collect in `~/.sjc/reverseproxy/logz`.
-
-This system expects your docker-machine to be called "orchestra". See `docker-machine help create` for instructions.
 
 Try: 
 
