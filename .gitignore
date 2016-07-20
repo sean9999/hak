@@ -1,0 +1,8 @@
+*.log
+
+#   submodules not needed for this branch
+apps/
+cli/
+reverseproxy/
+skel/
+
