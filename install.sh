@@ -1,14 +1,15 @@
 #!/bin/bash
 
+SJC_ROOT=~/.sjc
+BRANCH=master
+
 sudo -v
 
-if [ -d ~/.sjc ]; then
-    bash ~/.sjc/update.sh
-else
-    git clone --branch develop --recurse-submodules https://github.com/stjosephcontent/orchestra.git ~/.sjc
-    cd ~/.sjc/reverseproxy
+if [ ! -d $SJC_ROOT ]; then
+    git clone --branch $BRANCH --recurse-submodules https://github.com/stjosephcontent/orchestra.git $SJC_ROOT
+    cd $SJC_ROOT/reverseproxy
     bash install.sh
-    cd ~/.sjc/cli
+    cd $SJC_ROOT/cli
     bash install.sh
 fi
 
